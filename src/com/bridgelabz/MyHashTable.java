@@ -46,4 +46,22 @@ public class MyHashTable<K, V> {
     public String toString() {
         return "MyLinkedListNodes{" + head + '}';
     }
+
+    public void remove(K word) {
+        MyMapNode currentNode = head;
+        MyMapNode previousNode = null;
+        while (currentNode != null && currentNode.getKey().equals(word)) {
+            head = currentNode.getNext();
+            return;
+        }
+        while (currentNode != null && !(currentNode.getKey().equals(word))) {
+            previousNode = currentNode;
+            currentNode = currentNode.getNext();
+        }
+        if (currentNode != null) {
+            previousNode.next = currentNode.next;
+        }
+        if (currentNode == null)
+            System.out.println("Word not found!");
+    }
 }
